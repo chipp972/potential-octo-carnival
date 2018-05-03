@@ -1,0 +1,32 @@
+.transition-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.transition-image {
+  flex: 1 0 auto;
+  margin: 0 auto;
+  max-width: 100%;
+  min-height: 500px;
+  height: auto;
+  width: auto;
+}
+
+.transition-image--small {
+  display: none;
+}
+
+@media screen and (max-width: 696px) {
+  .transition-image--big {
+    display: none;
+  }
+
+  .transition-image--small {
+    display: block;
+  }
+}

@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   height: 100vh;
   margin: 0;
 }
@@ -9,31 +10,7 @@ body {
   flex-flow: column nowrap;
 }
 
-.header {
-  width: 100%;
-}
-.header-logo {
-  max-width: 100%;
-  min-width: 100%;
-  padding-top: 7%;
-  background-image: url('/header-bg-2x.png');
-  background-repeat: no-repeat;
-}
-
-#footer {
-  width: 100%;
-}
-
-.footer-content {
-  width: 100%;
-  height: 500px;
-  display: flex;
-  flex-flow: row nowrap;
-  background-image: url('/darthvader.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.footer-content-item {
-  padding: 2rem;
+em {
+  text-decoration: underline;
+  font-style: normal;
 }

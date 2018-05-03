@@ -1,0 +1,12 @@
+.ad-container {
+  flex: 0 0 auto;
+  padding: 1rem;
+  width: 300px;
+  min-height: 600px;
+}
+
+@media screen and (max-width: 696px) {
+  .ad-container {
+    display: none;
+  }
+}
