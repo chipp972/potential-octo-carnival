@@ -1,8 +1,8 @@
-import './index.css';
-import './article.css';
-import './header.css'
-import './footer.css'
-import './transition-image.css'
+import './parts/index.css';
+import './parts/article.css';
+import './parts/header.css'
+import './parts/footer.css'
+import './parts/transition-image.css'
 import Parrallax from './parrallax/parrallax';
 import initMenu from './menu/menu';
 import Ad from './ad/ad';
