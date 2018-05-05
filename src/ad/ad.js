@@ -5,10 +5,10 @@ export default class Ad extends Animable {
   constructor(element, options = {}) {
     super([{ subject: window, event: 'scroll' }]);
     this.element = element;
-    this.initialTopPosition = this.element.offsetTop;
+    this.lastScrollY = window.scrollY;
     this.currentPaddingTop = 0;
-    this.limitY =
-      options.limitY ||
+    this.limitPadding =
+      options.limitPadding ||
       Math.max(
         document.querySelector('body').scrollHeight,
         document.querySelector('html').scrollHeight
@@ -17,39 +17,38 @@ export default class Ad extends Animable {
   }
 
   scrollTracking() {
-    if (this.shouldAnimate()) {
-      this.currentPaddingTop += this.trackDownward();
-      this.currentPaddingTop -= this.trackUpward();
-      this.element.style.paddingTop = this.currentPaddingTop + 'px';
-    }
-  }
+    if (window.scrollY > this.lastScrollY) {
+      const trackDownDelta = this.trackDownward();
+      this.currentPaddingTop += trackDownDelta;
 
-  /**
-   * Check if the ad is in the screen and should be animated
-   * @return {boolean} if the ad should be animated
-   */
-  shouldAnimate() {
-    const windowBottom = window.scrollY + window.innerHeight;
-    const elementTop = this.element.offsetTop + this.currentPaddingTop;
-    const elementBottom = elementTop + this.element.height;
-    return (
-      (window.scrollY + this.element.height > this.initialTopPosition &&
-        elementBottom < this.limitY) ||
-      (windowBottom < elementBottom && elementTop > this.initialTopPosition)
-    );
+    } else {
+      const trackUpDelta = this.trackUpward();
+      this.currentPaddingTop += trackUpDelta;
+    }
+    this.element.style.paddingTop = this.currentPaddingTop + 'px';
+    this.lastScrollY = window.scrollY;
   }
 
   /**
    * Calculate the padding top to add to make the ad stay on screen
    */
   trackDownward() {
-    const elementBottom =
-      this.element.offsetTop + this.element.height + this.currentPaddingTop;
     const elementTop = this.element.offsetTop + this.currentPaddingTop;
-    if (elementTop < window.scrollY && elementBottom > window.scrollY) {
-      return window.scrollY - elementTop;
+    const delta = Math.round(window.scrollY - elementTop);
+    if (
+      !(window.scrollY > elementTop &&
+        this.currentPaddingTop < this.limitPadding) ||
+      delta < 0
+    ) {
+      return 0;
+    } else if (
+      this.limitPadding &&
+      this.limitPadding < delta + this.currentPaddingTop
+    ) {
+      return this.limitPadding - this.currentPaddingTop;
+    } else {
+      return delta;
     }
-    return 0;
   }
 
   /**
@@ -57,12 +56,19 @@ export default class Ad extends Animable {
    */
   trackUpward() {
     const windowBottom = window.scrollY + window.innerHeight;
-    const elementTop = this.element.offsetTop + this.currentPaddingTop;
     const elementBottom =
-      this.element.offsetTop + this.element.height + this.currentPaddingTop;
-    if (elementTop < windowBottom && elementBottom > windowBottom) {
-      return elementBottom - windowBottom;
+      this.element.offsetTop +
+      this.element.clientHeight;
+    const delta = -Math.round(elementBottom - windowBottom);
+    if (
+      !(windowBottom < elementBottom && this.currentPaddingTop > 0) ||
+      delta > 0
+    ) {
+      return 0;
+    } else if (delta + this.currentPaddingTop < 0) {
+      return -this.currentPaddingTop;
+    } else {
+      return delta;
     }
-    return 0;
   }
 }

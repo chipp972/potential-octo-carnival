@@ -10,11 +10,9 @@ import Ad from './ad/ad';
 initMenu();
 
 const logo = document.querySelector('.header-logo');
-const adList = document.querySelectorAll('.ad-image');
-const kilorenImage = document.getElementById('kiloren-desktop');
+const adElement = document.getElementById('ps4-game');
+const adContainer = adElement.parentElement;
 const p = new Parrallax(logo, { speed: 0.8 });
 
-adList.forEach((adElement) => {
-  const ad = new Ad(adElement, { limitY: kilorenImage.offsetTop });
+  const ad = new Ad(adElement, { limitPadding: adContainer.clientHeight - adElement.clientHeight });
   ad.scrollTracking();
-})

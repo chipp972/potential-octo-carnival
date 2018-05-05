@@ -53,6 +53,7 @@
   padding: 0;
   margin: 0 auto;
   height: auto;
+  max-height: 290px;
   width: auto;
   max-width: 100%;
 }
