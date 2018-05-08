@@ -10,9 +10,13 @@ import Ad from './ad/ad';
 initMenu();
 
 const logo = document.querySelector('.header-logo');
-const adElement = document.getElementById('ps4-game');
-const adContainer = adElement.parentElement;
 const p = new Parrallax(logo, { speed: 0.8 });
 
-  const ad = new Ad(adElement, { limitPadding: adContainer.clientHeight - adElement.clientHeight });
-  ad.scrollTracking();
+// + parrallax on kiloren image
+const kiloren = document.querySelector('.transition-kiloren');
+const parrallax2 = new Parrallax(kiloren, { speed: 0.6 });
+
+const adElement = document.getElementById('ps4-game');
+const adContainer = adElement.parentElement;
+const ad = new Ad(adElement, { limitPadding: adContainer.clientHeight - adElement.clientHeight });
+ad.scrollTracking();
