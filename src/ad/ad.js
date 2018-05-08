@@ -7,8 +7,8 @@ export default class Ad extends Animable {
     this.element = element;
     this.lastScrollY = window.scrollY;
     this.currentPaddingTop = 0;
-    this.limitPadding =
-      options.limitPadding ||
+    this.maxPadding =
+      options.maxPadding ||
       Math.max(
         document.querySelector('body').scrollHeight,
         document.querySelector('html').scrollHeight
@@ -37,15 +37,15 @@ export default class Ad extends Animable {
     const delta = Math.round(window.scrollY - elementTop);
     if (
       !(window.scrollY > elementTop &&
-        this.currentPaddingTop < this.limitPadding) ||
+        this.currentPaddingTop < this.maxPadding) ||
       delta < 0
     ) {
       return 0;
     } else if (
-      this.limitPadding &&
-      this.limitPadding < delta + this.currentPaddingTop
+      this.maxPadding &&
+      this.maxPadding < delta + this.currentPaddingTop
     ) {
-      return this.limitPadding - this.currentPaddingTop;
+      return this.maxPadding - this.currentPaddingTop;
     } else {
       return delta;
     }
