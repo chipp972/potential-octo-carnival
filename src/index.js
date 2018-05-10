@@ -17,7 +17,7 @@ const p = new Parrallax(logo, { speed: 0.8 });
 
 // + parrallax on kiloren image
 const kiloren = document.querySelector('.transition-kiloren');
-const parrallax2 = new Parrallax(kiloren, { speed: 0.6 });
+const parrallax2 = new Parrallax(kiloren, { speed: 0.5 });
 
 // ad scroll tracking
 const adElement = document.getElementById('ps4-game');

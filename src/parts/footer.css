@@ -15,48 +15,17 @@
   align-content: space-between;
   color: grey;
 
+  background-color: #181818;
   background-image: url('/darthvader_2x.jpg');
   min-height: 15rem;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.footer-content-background--small {
-  display: none;
-}
-
-@media screen and (max-width: 696px) {
-  #footer {
-  }
-  .footer-content {
-    background-image: url('/darthvader.jpg');
-  }
-
-  .footer-content-background--big {
-    display: none;
-  }
-
-  .footer-content-background--small {
-    display: block;
-  }
+  background-size: contain;
 }
 
 .footer-content-item {
-  z-index: 1;
   width: calc(100% / 3);
   text-align: center;
-}
-
-.footer-content-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  z-index: 0;
-  margin: auto;
 }
 
 .footer-content-item--full-width {
@@ -74,4 +43,66 @@
 
 .footer-content-item-list a {
   color: grey;
+}
+
+.footer-content-social-label {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+}
+
+.footer-content-social-icons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icon {
+  padding: 8px;
+}
+
+@media screen and (max-width: 696px) {
+  #article-1 {
+    text-align: center;
+
+  }
+
+  .footer-content-item {
+    display: flex;
+    width: 50%;
+  }
+
+  .footer-content-item-list {
+    padding: 0;
+    margin: auto;
+  }
+
+  .footer-content {
+    background-image: url('/darthvader.jpg');
+    align-content: stretch;
+  }
+
+  .footer-content-item--full-width {
+    display: none;
+  }
+
+  .footer-content-social {
+    width: 100%;
+  }
+
+  .footer-content-social-label {
+    width: 50%;
+  }
+  .footer-content-social-icons {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footer-content {
+    background-size: cover;
+  }
 }

@@ -6,26 +6,23 @@
 }
 
 .transition-stormtroopers {
-  min-height: 500px;
+  min-height: 250px;
   background-image: url('/stormtroopers-2x.jpg');
 }
 
 .transition-kiloren {
-  min-height: 1000px;
+  min-height: 500px;
   background-image: url('/kiloren-2x.jpg');
 }
 
-.transition-image {
-  flex: 1 0 auto;
-  margin: 0 auto;
-  max-width: 100%;
-  min-height: 500px;
-  height: auto;
-  width: auto;
-}
+@media screen and (min-width: 1440px) {
+  .transition-stormtroopers {
+    min-height: 500px;
+  }
 
-.transition-image--small {
-  display: none;
+  .transition-kiloren {
+    min-height: 1000px;
+  }
 }
 
 @media screen and (max-width: 696px) {
@@ -37,12 +34,5 @@
   .transition-kiloren {
     min-height: 500px;
     background-image: url('/kiloren.jpg');
-  }
-  .transition-image--big {
-    display: none;
-  }
-
-  .transition-image--small {
-    display: block;
   }
 }

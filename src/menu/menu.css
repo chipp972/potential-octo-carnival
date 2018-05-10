@@ -10,6 +10,7 @@
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
+  z-index: 9999;
 }
 
 #menu-list {
@@ -43,11 +44,12 @@
   #menu-button {
     display: block;
     width: 10%;
-    padding: 2%;
+    padding-top: 4%;
   }
 
   #menu-button.open-menu {
     background-color: rgba(0, 0, 0, 0.5);
+    padding: 4%;
   }
 
   #menu {
