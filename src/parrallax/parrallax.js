@@ -1,9 +1,9 @@
 import Animable from '../animable';
 export default class Parrallax extends Animable {
-  constructor(element, options) {
+  constructor(element, { speed }) {
     super([{ subject: window, event: 'scroll' }]);
     this.element = element;
-    this.speed = options.speed || 0.8;
+    this.speed = speed || 0.8;
     this.elementTop = this.element.offsetTop;
     this.elementBottom = this.elementTop + this.element.clientHeight;
     this.animationCallbackList.scroll = () => this.executeParrallax();
@@ -24,6 +24,10 @@ export default class Parrallax extends Animable {
     );
   }
 
+  setBackgroundPositionY() {
+    this.element.style['background-position-y'] = `${this.currentBackgroundPositionY}px`;
+  }
+
   executeParrallax() {
     this.lastPosition = this.currentPosition;
     this.currentPosition = window.scrollY;
@@ -31,8 +35,7 @@ export default class Parrallax extends Animable {
       // window.scrollY == this.elementTop => this.currentBackgroundPositionY = 0
       const delta = window.scrollY - this.elementTop;
       this.currentBackgroundPositionY = delta * this.speed;
-      this.element.style['background-position-y'] =
-        this.currentBackgroundPositionY + 'px';
+      this.setBackgroundPositionY();
     }
   }
 }

@@ -13,15 +13,14 @@ menu.activateMenu();
 
 // parrallax on header logo
 const logo = document.querySelector('.header-logo');
-const p = new Parrallax(logo, { speed: 0.8 });
+const parrallax = new Parrallax(logo, { speed: 0.8 });
 
-// + parrallax on kiloren image
+// parrallax on kiloren image to test parrallax class
+/*
 const kiloren = document.querySelector('.transition-kiloren');
 const parrallax2 = new Parrallax(kiloren, { speed: 0.5 });
+*/
 
 // ad scroll tracking
 const adElement = document.getElementById('ps4-game');
-const adContainer = adElement.parentElement;
-const maxPadding = adContainer.clientHeight - adElement.clientHeight;
-const ad = new Ad(adElement, { maxPadding });
-ad.scrollTracking();
+const ad = new Ad(adElement, { isLimitedToContainer: true });
